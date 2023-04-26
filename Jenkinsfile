@@ -21,6 +21,7 @@ pipeline{
         }
         stage("Terraform Apply"){
             steps{
+                input(message: 'Click "proceed" to approve the above Terraform Plan')
                 sh 'terraform apply -auto-approve'
             }
         }
