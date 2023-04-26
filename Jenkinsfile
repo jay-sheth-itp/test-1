@@ -21,8 +21,14 @@ pipeline{
         }
         stage("Terraform Apply"){
             steps{
-                input(message: 'Click "proceed" to approve the above Terraform Plan')
+                input(message: 'Click "proceed" to approve the above Terraform Apply')
                 sh 'terraform apply -auto-approve'
+            }
+        }
+        stage("Terraform Destroy"){
+            steps{
+                input(message: 'Click "proceed" to approve the above Terraform Destroy')
+                sh 'terraform destroy -auto-approve'
             }
         }
         
