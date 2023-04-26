@@ -7,11 +7,22 @@ pipeline{
                 echo "git checkout"
             }
         }
-        stage("Deploy to S3"){
+        stage("Terraform Init"){
             steps{
-                sh "aws s3 rm s3://jay.com/index.html"
-                sh "aws s3 cp index.html s3://jay.com"
+                sh 'Terraform init'
             }
         }
+        stage("Terraform Apply"){
+            steps{
+                sh 'Terraform apply -auto-approve'
+            }
+        }
+        
+//         stage("Deploy to S3"){
+//             steps{
+//                 sh "aws s3 rm s3://jay.com/index.html"
+//                 sh "aws s3 cp index.html s3://jay.com"
+//             }
+//         }
     }
 }
