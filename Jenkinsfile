@@ -6,7 +6,7 @@ pipeline{
                 // git branch: 'main', credentialsId: 'jay-sheth-itp', url: 'https://github.com/jay-sheth-itp/test-1.git'
                 echo "git checkout"
                 echo "git init"
-                pwd
+                sh 'ls'
             }
         }
         stage("Terraform Validate"){
