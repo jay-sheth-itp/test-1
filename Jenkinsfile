@@ -1,10 +1,17 @@
 pipeline{
     agent any
     stages{
-        stage("git ckecout"){
+        stage("git checkout"){
             steps{
                 // git branch: 'main', credentialsId: 'jay-sheth-itp', url: 'https://github.com/jay-sheth-itp/test-1.git'
                 echo "git checkout"
+                echo "git init"
+                pwd
+            }
+        }
+        stage("Terraform Validate"){
+            steps{
+                sh 'terraform validate'
             }
         }
         stage("Terraform Init"){
